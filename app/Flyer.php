@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
+
 
 class Flyer extends Model
 {
@@ -17,6 +19,33 @@ class Flyer extends Model
         'price',
         'description'
     ];
+
+    public function getPriceAttribute($price)
+    {
+        return '$' . number_format($price);
+    }
+
+    /**
+     * Scope query to those located at a given address.
+     *
+     * @param string $zip
+     * @param string $street
+     * @return Builder
+     */
+    public static function locatedAt($zip, $street)
+    {
+        $street = str_replace('-', ' ', $street);
+
+
+       // return static::where('zip', $zip)->where('street', $street)->first();
+
+        return static::where(compact('zip', 'street'))->first();
+    }
+
+    public function addPhoto(Photo $photo)
+    {
+        return $this->photos()->save($photo);
+    }
 
     public function photos()
     {

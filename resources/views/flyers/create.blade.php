@@ -7,12 +7,13 @@
 
     <h1>Selling your home!</h1>
 
-    <div class="row">
-        <form action="/flyers" method="POST" enctype="multipart/form-data" class="col-md-6">
+    <hr>
 
-            @include('flyers._form')
+    <form action="/flyers" method="POST" enctype="multipart/form-data">
 
-        </form>
-    </div>
+        @include('flyers._form')
+
+    </form>
+
 
 @endsection
