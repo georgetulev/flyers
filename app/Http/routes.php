@@ -15,10 +15,12 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::auth();
+
 Route::resource('flyers', 'FlyersController', ['except' => 'show'] );
 Route::get('{zip}/{street}', 'FlyersController@show');
 Route::post('{zip}/{street}/photos', 'FlyersController@addPhoto');
 
-Route::auth();
+
 
 Route::get('/home', 'HomeController@index');
