@@ -36,14 +36,22 @@ class Flyer extends Model
     {
         $street = str_replace('-', ' ', $street);
 
-        return static::where(compact('zip', 'street'))->findOrFail();
+        // ToDo NOT_TO_FORGET!  If ModelNotFoundException is thrown -> we must redirect or .... sth.else!
+        return static::where('zip', $zip)->where('street', $street)->firstOrFail();
     }
 
+    /**
+     * @param Photo $photo
+     * @return Model
+     */
     public function addPhoto(Photo $photo)
     {
         return $this->photos()->save($photo);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function photos()
     {
         return $this->hasMany(Photo::class);

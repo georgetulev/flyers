@@ -28,7 +28,7 @@ class CreateFlyerRequest extends Request
             'city' => 'required',
             'zip' => 'required',
             'state' => 'required',
-            'price' => 'required|integer',
+            'price' => 'required',
             'description' => 'required',
             'country' => 'required',
         ];
