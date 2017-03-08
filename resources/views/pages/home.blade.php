@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+    <h1>.</h1>
     <div class="jumbotron">
         <h1>Project Flyer</h1>
 

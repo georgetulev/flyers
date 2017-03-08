@@ -12,6 +12,7 @@ class Flyer extends Model
 
     protected $fillable = [
         'country',
+        'user_id',
         'street',
         'city',
         'zip',
@@ -55,5 +56,15 @@ class Flyer extends Model
     public function photos()
     {
         return $this->hasMany(Photo::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
+
+    public function ownedBy(User $user)
+    {
+        return $this->user_id == $user->id;
     }
 }

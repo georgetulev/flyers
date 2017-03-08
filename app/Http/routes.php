@@ -11,11 +11,9 @@
 |
 */
 
-Auth::loginUsingId(1);
+//Auth::loginUsingId(1);
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/', 'PagesController@home');
 
 Route::resource('flyers', 'FlyersController');
 Route::get('{zip}/{street}', 'FlyersController@show');
